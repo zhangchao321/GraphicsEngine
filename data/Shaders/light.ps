@@ -1,0 +1,46 @@
+cbuffer LightBuffer
+{
+	float4 gAmbientColor;
+	float4 gDiffuseColor;
+	float3 gDiffuseDir;
+	float  gSpecularPower;
+	float4 gSpecularColor;
+}
+
+Texture2D mappedSRV;
+SamplerState ss;
+
+struct PixelIn
+{
+	float4 pos : SV_POSITION;
+	float2 tex : TEXCOORD;
+	float3 normal : NORMAL0;
+	float3 viewDir : NORMAL1;
+};
+
+float4 PS(PixelIn pin) : SV_TARGET
+{
+	float4 texColor = mappedSRV.Sample(ss, pin.tex);
+
+	float4 lightColor = gAmbientColor;
+
+	float3 dir = -gDiffuseDir;
+	float intensity = saturate(dot(dir, pin.normal));
+
+	float3 reflection;
+	float4 specular;
+	if(intensity > 0.0f)
+	{
+		lightColor += intensity * gDiffuseColor;
+		reflection = normalize(2 * intensity * pin.normal - dir);
+
+		specular = pow(saturate(dot(reflection, pin.viewDir)), gSpecularPower);
+	}
+	
+
+	lightColor = saturate(lightColor);
+
+	float4 color = lightColor * texColor + specular;
+
+	return color;
+}

@@ -1,0 +1,30 @@
+cbuffer PixelBuffer
+{
+	float4 gPixelColor;
+};
+
+Texture2D mappedSRV;
+SamplerState ss;
+
+struct PixelIn
+{
+	float4 pos : SV_POSITION;
+	float2 tex : TEXCOORD;
+};
+
+float4 PS(PixelIn pin) : SV_TARGET
+{
+	float4 color = mappedSRV.Sample(ss, pin.tex);
+
+	// If the color is black on the texture then treat this pixel as transparent.
+	if(color.r == 0.0f)
+		color.a = 0.0f;
+	// If the color is other than black on the texture then this is a pixel in the font so draw it using the font pixel color.
+	else
+	{
+		color.a = 1.0f;
+		color = color * gPixelColor;
+	}
+
+	return color;
+}
