@@ -1,8 +1,6 @@
 #include "ggl.h"
 #include "scene.h"
-#include"utils.h"
-#pragma comment(lib,"opengl32.lib") 
-
+#include"utils.h" 
 LRESULT CALLBACK GLWindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
