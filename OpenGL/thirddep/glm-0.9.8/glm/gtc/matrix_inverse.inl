@@ -105,6 +105,7 @@ namespace glm
 		detail::tmat4x4<valType> const & m
 	)
 	{
+		//求每一项的代数与子式的值
 		valType SubFactor00 = m[2][2] * m[3][3] - m[3][2] * m[2][3];
 		valType SubFactor01 = m[2][1] * m[3][3] - m[3][1] * m[2][3];
 		valType SubFactor02 = m[2][1] * m[3][2] - m[3][1] * m[2][2];
@@ -146,6 +147,7 @@ namespace glm
 		Inverse[3][2] = - (m[0][0] * SubFactor14 - m[0][1] * SubFactor16 + m[0][3] * SubFactor18);
 		Inverse[3][3] = + (m[0][0] * SubFactor15 - m[0][1] * SubFactor17 + m[0][2] * SubFactor18);
 
+		//求行列式的值
 		valType Determinant = 
 			+ m[0][0] * Inverse[0][0] 
 			+ m[0][1] * Inverse[0][1] 
