@@ -3,6 +3,7 @@
 #include "model.h"
 #include "framebufferobject.h"
 #include "fullscreenquad.h"
+
 glm::mat4 viewMatrix, projectionMatrix;
 glm::vec3 cameraPos(0, 0, 0);
 Model model;
