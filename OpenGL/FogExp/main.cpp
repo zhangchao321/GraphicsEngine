@@ -1,6 +1,62 @@
 #include "ggl.h"
 #include "scene.h"
 #include"utils.h" 
+
+#ifndef USEGLFW
+#include "glew.h"
+#include "GLFW/glfw3.h"
+void key_callback(GLFWwindow * window, int key, int scancode, int action, int mode)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, GL_TRUE);
+}
+
+int main(int argc, char* argv[])
+{
+	glfwInit();
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+	glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
+
+	GLFWwindow * window = glfwCreateWindow(800, 600, "LearnOpenGL", nullptr, nullptr);
+	glfwMakeContextCurrent(window);
+
+	glfwSetWindowPos(window, 100, 80);
+	glfwShowWindow(window);
+
+	if (window == NULL)
+	{
+		std::cout << "Failed to create GLFW window" << std::endl;
+		glfwTerminate();
+		return -1;
+	}
+
+	if (glewInit() != GLEW_OK)
+	{
+		std::cout << "Failed to initialize GLEW" << std::endl;
+		return -1;
+	}
+
+	Init();
+	SetViewPort(800, 600);
+
+	glViewport(0, 0, 800, 600);
+	glfwSetKeyCallback(window, key_callback);
+
+	while (!glfwWindowShouldClose(window))
+	{
+		glfwPollEvents();
+
+		Draw();
+		glfwSwapBuffers(window);
+	}
+
+	glfwTerminate();
+	return 0;
+}
+#else
 LRESULT CALLBACK GLWindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
@@ -28,7 +84,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	winClass.hInstance = hInstance;
 	winClass.lpszClassName = L"GLWindow";
 	winClass.lpszMenuName = NULL;
-	winClass.style = CS_VREDRAW | CS_HREDRAW; 
+	winClass.style = CS_VREDRAW | CS_HREDRAW;
 	winClass.lpfnWndProc = GLWindowProc;
 
 	ATOM atom = RegisterClassEx(&winClass);
@@ -52,7 +108,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		100, 50, windowWidth, windowHeight,
 		NULL, NULL, hInstance, NULL
 	);
-	
+
 
 	HDC dc = GetDC(hwnd);
 	PIXELFORMATDESCRIPTOR pfd;
@@ -78,9 +134,9 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	MSG msg;
 	while (true)
 	{
-		if (PeekMessage(&msg,NULL,NULL,NULL,PM_REMOVE))
+		if (PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE))
 		{
-			if (msg.message==WM_QUIT)
+			if (msg.message == WM_QUIT)
 			{
 				break;
 			}
@@ -92,3 +148,5 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 	return 0;
 }
+#endif
+ 

@@ -1,3 +1,4 @@
+add_definitions(-DUSEGLFW)
 add_subdirectory(OpenGLEngine)
 add_subdirectory(CubeRGB)
 add_subdirectory(MaterialAmbientVS)

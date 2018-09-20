@@ -1,6 +1,7 @@
 include_directories(
     ../thirddep/glm-0.9.8
     ../thirddep/glew-2.1.0/include/GL
+    ../OpenGLEngine
 ) 
 file(GLOB CXX_FILES *.cpp *.h)
  
