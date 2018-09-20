@@ -24,7 +24,7 @@ void Init() {
 
 	lightModel.Init("Res/Sphere.obj");
 	lightModel.mShader->Init("Res/light_renderer.vs", "Res/light_renderer.fs");
-	lightModel.mModelMatrix = glm::translate(0.0, 1.2, 0.0)*glm::scale(0.1, 0.1, 0.1);
+	lightModel.mModelMatrix = glm::translate(glm::mat4(1.0),glm::vec3(0.0, 1.2, 0.0))*glm::scale(glm::mat4(1.0),glm::vec3(0.1, 0.1, 0.1));
 
 	fsq = new FullScreenQuad;
 	fsq->Init();

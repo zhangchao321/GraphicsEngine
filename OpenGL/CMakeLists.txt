@@ -36,3 +36,5 @@ add_subdirectory(PictureMultiply)
 add_subdirectory(PictureDarker)
 add_subdirectory(PictureLighter)
 add_subdirectory(PictureBlend)
+
+add_subdirectory(FrameWork)

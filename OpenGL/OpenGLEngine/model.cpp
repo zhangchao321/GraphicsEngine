@@ -105,7 +105,7 @@ void Model::Draw(glm::mat4 & viewMatrix, glm::mat4 projectionMatrix, float x, fl
 	mVertexBuffer->Unbind();
 }
 void Model::SetPosition(float x, float y, float z) {
-	mModelMatrix = glm::translate(x, y, z);
+	mModelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(x, y, z) );
 }
 void Model::SetAmbientMaterial(float r, float g, float b, float a) {
 	mShader->SetVec4("U_AmbientMaterial", r, g, b, a);

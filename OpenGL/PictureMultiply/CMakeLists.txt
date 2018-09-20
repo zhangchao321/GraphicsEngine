@@ -1,5 +1,5 @@
 include_directories(
-    ../thirddep/glm-0.9.8
+    ../thirddep
     ../thirddep/glew-2.1.0/include/GL
     ../thirddep/glfw-3.2.1/include
     ../OpenGLEngine
