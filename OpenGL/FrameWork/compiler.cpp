@@ -20,7 +20,7 @@
 
 std::string getDataDirectory();
 
-compiler::commandline::commandline(std::string const & Filename, std::string const & Arguments) :
+Compiler::Commandline::Commandline(std::string const & Filename, std::string const & Arguments) :
 	Profile("core"),
 	Version(-1)
 {
@@ -31,7 +31,7 @@ compiler::commandline::commandline(std::string const & Filename, std::string con
 	this->parseArguments(Arguments);
 }
 
-void compiler::commandline::parseArguments(std::string const & Arguments)
+void Compiler::Commandline::parseArguments(std::string const & Arguments)
 {
 	std::stringstream Stream(Arguments);
 	std::string Param;
@@ -82,7 +82,7 @@ void compiler::commandline::parseArguments(std::string const & Arguments)
 	}
 }
 
-std::string compiler::commandline::getDefines() const
+std::string Compiler::Commandline::getDefines() const
 {
 	std::string Result;
 	for(std::size_t i = 0; i < this->Defines.size(); ++i)
@@ -92,7 +92,7 @@ std::string compiler::commandline::getDefines() const
 
 // compiler::parser
 
-std::string compiler::parser::operator()(commandline const & CommandLine, std::string const & Filename) const
+std::string Compiler::parser::operator()(Commandline const & CommandLine, std::string const & Filename) const
 {
 	std::string Source = load_file(Filename);
 	assert(!Source.empty());
@@ -161,7 +161,7 @@ std::string compiler::parser::operator()(commandline const & CommandLine, std::s
 	return Text;
 }
 
-std::string compiler::parser::parseInclude(std::string const & Line, std::size_t const & Offset) const
+std::string Compiler::parser::parseInclude(std::string const & Line, std::size_t const & Offset) const
 {
 	std::string Result;
 
@@ -172,16 +172,16 @@ std::string compiler::parser::parseInclude(std::string const & Line, std::size_t
 }
 
 // compiler
-compiler::~compiler()
+Compiler::~Compiler()
 {
 	this->clear();
 }
 
-GLuint compiler::create(GLenum Type, std::string const & Filename, std::string const & Arguments)
+GLuint Compiler::create(GLenum Type, std::string const & Filename, std::string const & Arguments)
 {
 	assert(!Filename.empty());
 	
-	commandline CommandLine(Filename, Arguments);
+	Commandline CommandLine(Filename, Arguments);
 
 	std::string PreprocessedSource = parser()(CommandLine, Filename);
 	assert(!PreprocessedSource.empty());
@@ -203,7 +203,7 @@ GLuint compiler::create(GLenum Type, std::string const & Filename, std::string c
 	return Name;
 }
 
-bool compiler::destroy(GLuint const & Name)
+bool Compiler::destroy(GLuint const & Name)
 {
 	files_map::iterator NameIterator = this->ShaderFiles.find(Name);
 	if(NameIterator == this->ShaderFiles.end())
@@ -224,7 +224,7 @@ bool compiler::destroy(GLuint const & Name)
 	return true;
 }
 
-bool compiler::validate_program(GLuint ProgramName) const
+bool Compiler::validate_program(GLuint ProgramName) const
 {
 	if(!ProgramName)
 		return false;
@@ -249,7 +249,7 @@ bool compiler::validate_program(GLuint ProgramName) const
 	return Result == GL_TRUE;
 }
 
-bool compiler::check_program(GLuint ProgramName) const
+bool Compiler::check_program(GLuint ProgramName) const
 {
 	if(!ProgramName)
 		return false;
@@ -274,7 +274,7 @@ bool compiler::check_program(GLuint ProgramName) const
 }
 
 // TODO Interaction with KHR_debug
-bool compiler::check()
+bool Compiler::check()
 {
 	bool Success(true);
 
@@ -307,7 +307,7 @@ bool compiler::check()
 	return Success; 
 }
 
-void compiler::clear()
+void Compiler::clear()
 {
 	for(
 		names_map::iterator ShaderNameIterator = this->ShaderNames.begin(); 

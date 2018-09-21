@@ -8,9 +8,9 @@
 
 namespace glf
 {
-	struct vertex_v2fv2f
+	struct Vertex_v2fv2f
 	{
-		vertex_v2fv2f
+		Vertex_v2fv2f
 		(
 			glm::vec2 const & Position,
 			glm::vec2 const & Texcoord
@@ -23,9 +23,9 @@ namespace glf
 		glm::vec2 Texcoord;
 	};
 
-	struct vertex_v3fv2f
+	struct Vertex_v3fv2f
 	{
-		vertex_v3fv2f
+		Vertex_v3fv2f
 		(
 			glm::vec3 const & Position,
 			glm::vec2 const & Texcoord
@@ -38,9 +38,9 @@ namespace glf
 		glm::vec2 Texcoord;
 	};
 
-	struct vertex_v3fv4u8
+	struct Vertex_v3fv4u8
 	{
-		vertex_v3fv4u8
+		Vertex_v3fv4u8
 		(
 			glm::vec3 const & Position,
 			glm::u8vec4 const & Color
@@ -53,9 +53,9 @@ namespace glf
 		glm::u8vec4 Color;
 	};
 
-	struct vertex_v2fv3f
+	struct Vertex_v2fv3f
 	{
-		vertex_v2fv3f
+		Vertex_v2fv3f
 		(
 			glm::vec2 const & Position,
 			glm::vec3 const & Texcoord
@@ -68,9 +68,9 @@ namespace glf
 		glm::vec3 Texcoord;
 	};
 
-	struct vertex_v3fv3f
+	struct Vertex_v3fv3f
 	{
-		vertex_v3fv3f
+		Vertex_v3fv3f
 		(
 			glm::vec3 const & Position,
 			glm::vec3 const & Texcoord
@@ -83,9 +83,9 @@ namespace glf
 		glm::vec3 Texcoord;
 	};
 
-	struct vertex_v3fn3f
+	struct Vertex_v3fn3f
 	{
-		vertex_v3fn3f
+		Vertex_v3fn3f
 		(
 			glm::vec3 const & Position,
 			glm::vec3 const & Texcoord
@@ -98,9 +98,9 @@ namespace glf
 		glm::vec3 Texcoord;
 	};
 
-	struct vertex_v3fv3fv1i
+	struct Vertex_v3fv3fv1i
 	{
-		vertex_v3fv3fv1i
+		Vertex_v3fv3fv1i
 		(
 			glm::vec3 const & Position,
 			glm::vec3 const & Texcoord,
@@ -116,9 +116,9 @@ namespace glf
 		int DrawID;
 	};
 
-	struct vertex_v4fv2f
+	struct Vertex_v4fv2f
 	{
-		vertex_v4fv2f
+		Vertex_v4fv2f
 		(
 			glm::vec4 const & Position,
 			glm::vec2 const & Texcoord
@@ -131,9 +131,9 @@ namespace glf
 		glm::vec2 Texcoord;
 	};
 
-	struct vertex_v2fc4f
+	struct Vertex_v2fc4f
 	{
-		vertex_v2fc4f
+		Vertex_v2fc4f
 		(
 			glm::vec2 const & Position,
 			glm::vec4 const & Color
@@ -146,9 +146,9 @@ namespace glf
 		glm::vec4 Color;
 	};
 
-	struct vertex_v2fc4d
+	struct Vertex_v2fc4d
 	{
-		vertex_v2fc4d
+		Vertex_v2fc4d
 		(
 			glm::vec2 const & Position,
 			glm::dvec4 const & Color
@@ -161,9 +161,9 @@ namespace glf
 		glm::dvec4 Color;
 	};
 
-	struct vertex_v4fc4f
+	struct Vertex_v4fc4f
 	{
-		vertex_v4fc4f
+		Vertex_v4fc4f
 		(
 			glm::vec4 const & Position,
 			glm::vec4 const & Color
@@ -176,9 +176,9 @@ namespace glf
 		glm::vec4 Color;
 	};
 
-	struct vertex_v2fc4ub
+	struct Vertex_v2fc4ub
 	{
-		vertex_v2fc4ub
+		Vertex_v2fc4ub
 		(
 			glm::vec2 const & Position,
 			glm::u8vec4 const & Color
@@ -191,9 +191,9 @@ namespace glf
 		glm::u8vec4 Color;
 	};
 
-	struct vertex_v2fv2fv4ub
+	struct Vertex_v2fv2fv4ub
 	{
-		vertex_v2fv2fv4ub
+		Vertex_v2fv2fv4ub
 		(
 			glm::vec2 const & Position,
 			glm::vec2 const & Texcoord,
@@ -209,9 +209,9 @@ namespace glf
 		glm::u8vec4 Color;
 	};
 
-	struct vertex_v2fv2fv4f
+	struct Vertex_v2fv2fv4f
 	{
-		vertex_v2fv2fv4f
+		Vertex_v2fv2fv4f
 		(
 			glm::vec2 const & Position,
 			glm::vec2 const & Texcoord,
@@ -227,9 +227,9 @@ namespace glf
 		glm::vec4 Color;
 	};
 
-	struct vertex_v4fv4f
+	struct Vertex_v4fv4f
 	{
-		vertex_v4fv4f
+		Vertex_v4fv4f
 		(
 			glm::vec4 const & Position,
 			glm::vec4 const & Texcoord
@@ -242,9 +242,9 @@ namespace glf
 		glm::vec4 Texcoord;
 	};
 
-	struct vertex_v4fv4fv4f
+	struct Vertex_v4fv4fv4f
 	{
-		vertex_v4fv4fv4f
+		Vertex_v4fv4fv4f
 		(
 			glm::vec4 const & Position,
 			glm::vec4 const & Texcoord,

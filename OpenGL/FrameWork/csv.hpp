@@ -7,11 +7,11 @@
 
 std::string format(const char * Message, ...);
 
-class csv
+class Csv
 {
-	struct data
+	struct Data
 	{
-		data(
+		Data(
 			std::string const & String,
 			double Convergent, double Min, double Max) :
 			String(String),
@@ -30,6 +30,6 @@ public:
 	void print();
 
 private:
-	std::vector<data> Data;
+	std::vector<Data> data;
 };
 

@@ -9,8 +9,7 @@
 
 std::string getDataDirectory()
 {
-	//return std::string(OGL_SAMPLES_SOURCE_DIR) + "/data/";
-	return "";
+	return "Res/";
 }
 
 std::string getBinaryDirectory()
@@ -253,7 +252,7 @@ void FrameWork::stop()
 	glfwSetWindowShouldClose(this->Window, GL_TRUE);
 }
 
-void FrameWork::log(csv & CSV, char const* String)
+void FrameWork::log(Csv & CSV, char const* String)
 {
 	CSV.log(String, this->TimeSum / this->FrameCount, this->TimeMin, this->TimeMax);
 }

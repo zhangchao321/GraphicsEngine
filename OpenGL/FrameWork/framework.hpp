@@ -153,7 +153,7 @@ public:
 	};
 
 	int operator()();
-	void log(csv & CSV, char const* String);
+	void log(Csv & CSV, char const* String);
 	void setupView(bool Translate, bool RotateX, bool RotateY);
 
 protected:

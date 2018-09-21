@@ -1,12 +1,12 @@
 #include "caps.hpp"
 
-bool caps::check(GLint MajorVersionRequire, GLint MinorVersionRequire)
+bool Caps::check(GLint MajorVersionRequire, GLint MinorVersionRequire)
 {
 	return (VersionData.MAJOR_VERSION * 100 + VersionData.MINOR_VERSION * 10)
 		>= (MajorVersionRequire * 100 + MinorVersionRequire * 10);
 }
 
-void caps::initVersion()
+void Caps::initVersion()
 {
 	glGetIntegerv(GL_MINOR_VERSION, &VersionData.MINOR_VERSION);
 	glGetIntegerv(GL_MAJOR_VERSION, &VersionData.MAJOR_VERSION);
@@ -72,7 +72,7 @@ void caps::initVersion()
 	}
 }
 
-void caps::initExtensions()
+void Caps::initExtensions()
 {
 	memset(&ExtensionData, 0, sizeof(ExtensionData));
 
@@ -780,7 +780,7 @@ void caps::initExtensions()
 	}
 }
 
-void caps::initDebug()
+void Caps::initDebug()
 {
 	memset(&DebugData, 0, sizeof(DebugData));
 
@@ -790,7 +790,7 @@ void caps::initDebug()
 	glGetIntegerv(GL_MAX_SERVER_WAIT_TIMEOUT, &DebugData.MAX_SERVER_WAIT_TIMEOUT);
 }
 
-void caps::initLimits()
+void Caps::initLimits()
 {
 	memset(&LimitsData, 0, sizeof(LimitsData));
 
@@ -958,7 +958,7 @@ void caps::initLimits()
 	if(check(3, 3) || (ExtensionData.ARB_texture_rectangle))
 		glGetIntegerv(GL_MAX_RECTANGLE_TEXTURE_SIZE, &LimitsData.MAX_RECTANGLE_TEXTURE_SIZE);
 
-	if(check(2, 2) && VersionData.PROFILE == caps::COMPATIBILITY)
+	if(check(2, 2) && VersionData.PROFILE == Caps::COMPATIBILITY)
 	{
 		glGetIntegerv(GL_MAX_VARYING_COMPONENTS, &LimitsData.MAX_VARYING_COMPONENTS);
 		glGetIntegerv(GL_MAX_VARYING_VECTORS, &LimitsData.MAX_VARYING_VECTORS);
@@ -1012,7 +1012,7 @@ void caps::initLimits()
 	}
 }
 
-void caps::initValues()
+void Caps::initValues()
 {
 	memset(&ValuesData, 0, sizeof(ValuesData));
 
@@ -1031,7 +1031,7 @@ void caps::initValues()
 	if(check(4, 3) || (ExtensionData.ARB_ES3_compatibility))
 		glGetInteger64v(GL_MAX_ELEMENT_INDEX, &ValuesData.MAX_ELEMENT_INDEX);
 
-	if(VersionData.PROFILE == caps::COMPATIBILITY)
+	if(VersionData.PROFILE == Caps::COMPATIBILITY)
 	{
 		glGetFloatv(GL_POINT_SIZE_MIN, &ValuesData.POINT_SIZE_MIN);
 		glGetFloatv(GL_POINT_SIZE_MAX, &ValuesData.POINT_SIZE_MAX);
@@ -1094,7 +1094,7 @@ void caps::initValues()
 		glGetIntegerv(GL_TEXTURE_BUFFER_OFFSET_ALIGNMENT, &ValuesData.TEXTURE_BUFFER_OFFSET_ALIGNMENT);
 }
 
-void caps::initFormats()
+void Caps::initFormats()
 {
 	memset(&FormatsData, 0, sizeof(FormatsData));
 
@@ -1338,7 +1338,7 @@ void caps::initFormats()
 	}
 }
 
-caps::caps(profile const & Profile) :
+Caps::Caps(Profile const & Profile) :
 	VersionData(Profile),
 	Version(VersionData),
 	Extensions(ExtensionData),

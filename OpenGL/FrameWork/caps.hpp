@@ -3,9 +3,9 @@
 #include "framework.hpp"
 #include <string>
 
-struct caps
+struct Caps
 {
-	enum profile
+	enum Profile
 	{
 		CORE = 0x00000001,
 		COMPATIBILITY = 0x00000002,
@@ -15,16 +15,16 @@ struct caps
 private:
 	bool check(GLint MajorVersionRequire, GLint MinorVersionRequire);
 
-	struct version
+	struct Version
 	{
-		version(profile const & Profile) :
+		Version(Profile const & Profile) :
 			PROFILE(Profile),
 			MINOR_VERSION(0),
 			MAJOR_VERSION(0),
 			CONTEXT_FLAGS(0),
 			NUM_EXTENSIONS(0)
 		{}
-		profile PROFILE;
+		Profile PROFILE;
 		GLint MINOR_VERSION;
 		GLint MAJOR_VERSION;
 		GLint CONTEXT_FLAGS;
@@ -60,7 +60,7 @@ private:
 
 	void initVersion();
 
-	struct extensions
+	struct Extensions
 	{
 		bool ARB_multitexture;
 		bool ARB_transpose_matrix;
@@ -269,7 +269,7 @@ private:
 
 	void initExtensions();
 
-	struct debug
+	struct Debug
 	{
 		GLint CONTEXT_FLAGS;
 		GLint MAX_DEBUG_GROUP_STACK_DEPTH;
@@ -279,7 +279,7 @@ private:
 
 	void initDebug();
 
-	struct limits
+	struct Limits
 	{
 		GLint MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
 		GLint MAX_COMPUTE_UNIFORM_BLOCKS;
@@ -392,7 +392,7 @@ private:
 
 	void initLimits();
 
-	struct values
+	struct Values
 	{
 		GLint SUBPIXEL_BITS;
 		GLint MAX_CLIP_DISTANCES;
@@ -437,7 +437,7 @@ private:
 
 	void initValues();
 
-	struct formats
+	struct Formats
 	{
 		bool COMPRESSED_RGB_S3TC_DXT1_EXT;
 		bool COMPRESSED_RGBA_S3TC_DXT1_EXT;
@@ -525,13 +525,13 @@ private:
 	void initFormats();
 
 public:
-	caps(profile const & Profile);
+	Caps(Profile const & Profile);
 
-	version const & Version;
-	extensions const & Extensions;
-	debug const & Debug;
-	limits const & Limits;
-	values const & Values;
-	formats const & Formats;
+	Version const & Version;
+	Extensions const & Extensions;
+	Debug const & Debug;
+	Limits const & Limits;
+	Values const & Values;
+	Formats const & Formats;
 };
 

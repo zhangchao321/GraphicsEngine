@@ -10,12 +10,12 @@
 std::string format(const char* Message, ...);
 bool checkError(const char* Title);
 
-class compiler
+class Compiler
 {
 	typedef std::map<std::string, GLuint> names_map;
 	typedef std::map<GLuint, std::string> files_map;
 
-	class commandline
+	class Commandline
 	{
 		enum profile
 		{
@@ -24,7 +24,7 @@ class compiler
 		};
 
 	public:
-		commandline(std::string const & Filename, std::string const & Arguments);
+		Commandline(std::string const & Filename, std::string const & Arguments);
 
 		void parseArguments(std::string const & Arguments);
 
@@ -43,14 +43,14 @@ class compiler
 	class parser
 	{
 	public:
-		std::string operator() (commandline const & CommandLine, std::string const & Filename) const;
+		std::string operator() (Commandline const & CommandLine, std::string const & Filename) const;
 
 	private:
 		std::string parseInclude(std::string const & Line, std::size_t const & Offset) const;
 	};
 
 public:
-	~compiler();
+	~Compiler();
 
 	GLuint create(GLenum Type, std::string const & Filename, std::string const & Arguments = std::string());
 	bool destroy(GLuint const & Name);

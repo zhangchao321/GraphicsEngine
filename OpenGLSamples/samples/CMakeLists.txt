@@ -23,7 +23,6 @@ if(NOT APPLE)
 set(GL_PROFILE_GTC es)
 set(GL_VERSION_GTC 200)
 set(GL_SHADER_GTC flat-color.vert flat-color.frag)
-glCreateSampleGTC(draw-elements)
 set(GL_SHADER_GTC fbo-shadow-depth.vert fbo-shadow-depth.frag fbo-shadow-render.vert fbo-shadow-render.frag)
 glCreateSampleGTC(fbo-shadow)
 

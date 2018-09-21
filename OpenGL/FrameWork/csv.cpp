@@ -17,36 +17,36 @@ std::string format(const char * Message, ...)
 	return Text;
 }
 
-void csv::log(char const* String, double Convergent, double Min, double Max)
+void Csv::log(char const* String, double Convergent, double Min, double Max)
 {
-	this->Data.push_back(data(String, Convergent, Min, Max));
+	this->data.push_back(Data(String, Convergent, Min, Max));
 }
 
-void csv::save(char const* Filename)
+void Csv::save(char const* Filename)
 {
 	FILE* File(fopen(Filename, "a+"));
 	assert(File);
 	fprintf(File, "%s;%s;%s;%s\n", "Tests", "average", "max", "min");
 
-	for(std::size_t i = 0; i < this->Data.size(); ++i)
+	for(std::size_t i = 0; i < this->data.size(); ++i)
 	{
 		fprintf(File, "%s;%d;%d;%d\n",
-			Data[i].String.c_str(),
-			static_cast<int>(Data[i].Convergent),
-			static_cast<int>(Data[i].Max), static_cast<int>(Data[i].Min));
+			data[i].String.c_str(),
+			static_cast<int>(data[i].Convergent),
+			static_cast<int>(data[i].Max), static_cast<int>(data[i].Min));
 	}
 	fclose(File);
 }
 
-void csv::print()
+void Csv::print()
 {
 	fprintf(stdout, "\n");
-	for(std::size_t i = 0; i < this->Data.size(); ++i)
+	for(std::size_t i = 0; i < this->data.size(); ++i)
 	{
 		fprintf(stdout, "%s, %2.5f, %2.5f, %2.5f\n",
-			Data[i].String.c_str(),
-			Data[i].Convergent / 1000.0,
-			Data[i].Min / 1000.0, Data[i].Max / 1000.0);
+			data[i].String.c_str(),
+			data[i].Convergent / 1000.0,
+			data[i].Min / 1000.0, data[i].Max / 1000.0);
 	}
 }
 
