@@ -83,7 +83,7 @@ private:
 	{
 		bool Validated(true);
 
-		GLint MaxVertexAtomicCounterBuffers(0);
+		/*GLint MaxVertexAtomicCounterBuffers(0);
 		GLint MaxControlAtomicCounterBuffers(0);
 		GLint MaxEvaluationAtomicCounterBuffers(0);
 		GLint MaxGeometryAtomicCounterBuffers(0);
@@ -95,7 +95,7 @@ private:
 		glGetIntegerv(GL_MAX_TESS_EVALUATION_ATOMIC_COUNTER_BUFFERS, &MaxEvaluationAtomicCounterBuffers);
 		glGetIntegerv(GL_MAX_GEOMETRY_ATOMIC_COUNTER_BUFFERS, &MaxGeometryAtomicCounterBuffers);
 		glGetIntegerv(GL_MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS, &MaxFragmentAtomicCounterBuffers);
-		glGetIntegerv(GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS, &MaxCombinedAtomicCounterBuffers);
+		glGetIntegerv(GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS, &MaxCombinedAtomicCounterBuffers);*/
 
 		glGenBuffers(buffer::MAX, &BufferName[0]);
 

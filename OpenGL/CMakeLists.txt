@@ -39,3 +39,4 @@ add_subdirectory(PictureBlend)
 
 add_subdirectory(FrameWork)
 add_subdirectory(ES200DrawElements)
+add_subdirectory(GL430AtomicCounter)
