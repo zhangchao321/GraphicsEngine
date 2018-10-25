@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 cmake_policy(VERSION 2.8)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/VulkanSamples/cmake")
 
 set(NAME vulkanExamples)
 
@@ -37,7 +37,7 @@ IF(WIN32)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DVK_USE_PLATFORM_WIN32_KHR")
 ELSE(WIN32)
 	IF (NOT Vulkan_FOUND)
-		find_library(Vulkan_LIBRARY NAMES vulkan HINTS "$ENV{VULKAN_SDK}/lib" "${CMAKE_SOURCE_DIR}/libs/vulkan" REQUIRED)
+		find_library(Vulkan_LIBRARY NAMES vulkan HINTS "$ENV{VULKAN_SDK}/lib" "${CMAKE_SOURCE_DIR}/VulkanSamples/libs/vulkan" REQUIRED)
 		IF (Vulkan_LIBRARY)
 			set(Vulkan_FOUND ON)
 			MESSAGE("Using bundled Vulkan library version")
@@ -123,7 +123,7 @@ if(RESOURCE_INSTALL_DIR)
 	add_definitions(-DVK_EXAMPLE_DATA_DIR=\"${RESOURCE_INSTALL_DIR}/\")
 	install(DIRECTORY data/ DESTINATION ${RESOURCE_INSTALL_DIR}/)
 else()
-	add_definitions(-DVK_EXAMPLE_DATA_DIR=\"${CMAKE_SOURCE_DIR}/data/\")
+	add_definitions(-DVK_EXAMPLE_DATA_DIR=\"${CMAKE_SOURCE_DIR}/VulkanSamples/data/\")
 endif()
 
 # Compiler specific stuff
@@ -137,7 +137,7 @@ ELSE(WIN32)
 	link_libraries(${XCB_LIBRARIES} ${Vulkan_LIBRARY} ${Vulkan_LIBRARY} ${ASSIMP_LIBRARIES} ${WAYLAND_CLIENT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 ENDIF(WIN32)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/VulkanSamples/bin/")
 
 add_subdirectory(base)
 add_subdirectory(examples)

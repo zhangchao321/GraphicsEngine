@@ -17,10 +17,11 @@ set(CMAKE_MODULE_PATH
   ${CMAKE_MODULE_PATH}
 )
 PROJECT(Engine)
+add_subdirectory(VulkanSamples)
+
 add_definitions(-UNICODE -D_UNICODE)
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS") 
 set(CMAKE_AUTOMOC ON)  
 add_subdirectory(D3D11)
 add_subdirectory(OpenGL)
 add_subdirectory(OpenGLSamples)
-add_subdirectory(VulkanSamples)
